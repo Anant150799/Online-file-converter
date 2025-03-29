@@ -1,0 +1,604 @@
+<!DOCTYPE <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online file converter. Convert PDF to Word, JPG to PNG, MP4 to MP3 and more. Fast, secure and easy to use.">
+    <title>FastConvert - Free Online File Converter | PDF, Image, Audio, Video</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-exchange-alt"></i>
+                <h1>FastConvert</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#formats">Supported Formats</a></li>
+                    <li class="premium"><a href="#premium">Premium</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <h2>Convert Files Online for Free</h2>
+                    <p>Fast, secure file conversion for documents, images, audio, video and more. No installation required.</p>
+                    <div class="cta-buttons">
+                        <button id="start-converting" class="btn primary">Start Converting</button>
+                        <button class="btn secondary">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/500x400" alt="File conversion illustration" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="converter" class="converter-section">
+            <div class="container">
+                <div class="converter-box">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="single">Single File</button>
+                        <button class="tab-btn" data-tab="batch">Batch Files <span class="pro-badge">PRO</span></button>
+                    </div>
+                    
+                    <div class="converter-content">
+                        <div id="single-tab" class="tab-content active">
+                            <div class="upload-area" id="drop-area">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Drag & Drop Files Here</h3>
+                                <p>or</p>
+                                <button class="btn primary" id="browse-btn">Browse Files</button>
+                                <input type="file" id="file-input" style="display: none;">
+                                <div class="file-info" id="file-info" style="display: none;">
+                                    <div class="file-details">
+                                        <span id="file-name"></span>
+                                        <span id="file-size"></span>
+                                    </div>
+                                    <button class="btn remove-btn" id="remove-file"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="progress-container" id="progress-container" style="display: none;">
+                                    <div class="progress-bar" id="progress-bar"></div>
+                                    <span id="progress-text">0%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="format-selector">
+                                <div class="select-group">
+                                    <label for="from-format">Convert from:</label>
+                                    <select id="from-format">
+                                        <option value="">Select format</option>
+                                        <optgroup label="Documents">
+                                            <option value="pdf">PDF</option>
+                                            <option value="docx">DOCX (Word)</option>
+                                            <option value="ppt">PPT (PowerPoint)</option>
+                                            <option value="xlsx">XLSX (Excel)</option>
+                                        </optgroup>
+                                        <optgroup label="Images">
+                                            <option value="jpg">JPG</option>
+                                            <option value="png">PNG</option>
+                                            <option value="svg">SVG</option>
+                                            <option value="webp">WebP</option>
+                                        </optgroup>
+                                        <optgroup label="Audio">
+                                            <option value="mp3">MP3</option>
+                                            <option value="wav">WAV</option>
+                                            <option value="aac">AAC</option>
+                                        </optgroup>
+                                        <optgroup label="Video">
+                                            <option value="mp4">MP4</option>
+                                            <option value="webm">WebM</option>
+                                            <option value="avi">AVI</option>
+                                        </optgroup>
+                                        <optgroup label="Other">
+                                            <option value="html">HTML</option>
+                                            <option value="zip">ZIP</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                
+                                <div class="convert-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                
+                                <div class="select-group">
+                                    <label for="to-format">Convert to:</label>
+                                    <select id="to-format">
+                                        <option value="">Select format</option>
+                                        <!-- Options will be populated dynamically based on from-format selection -->
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="options-section">
+                                <h4>Conversion Options</h4>
+                                <div class="options-grid" id="conversion-options">
+                                    <!-- Options will be populated dynamically based on format -->
+                                </div>
+                            </div>
+                            
+                            <button class="btn primary convert-btn" id="convert-btn" disabled>Convert Now</button>
+                        </div>
+                        
+                        <div id="batch-tab" class="tab-content">
+                            <div class="premium-feature">
+                                <div class="premium-content">
+                                    <i class="fas fa-crown"></i>
+                                    <h3>Upgrade to Premium for Batch Conversion</h3>
+                                    <p>Convert multiple files at once and download them as a ZIP archive.</p>
+                                    <button class="btn premium-btn">Get Premium</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Why Choose FastConvert?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Fast Conversion</h3>
+                        <p>Our cloud-based processing ensures your files are converted in seconds.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure & Private</h3>
+                        <p>Files are automatically deleted after conversion to protect your privacy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Works perfectly on all devices, from desktop to smartphone.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <h3>Multiple Formats</h3>
+                        <p>Supports all popular file formats for documents, images, audio and video.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="steps-section">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Upload File</h3>
+                        <p>Drag & drop your file or click to browse your device.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Select Format</h3>
+                        <p>Choose the format you want to convert your file to.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Convert</h3>
+                        <p>Click the convert button and wait a few seconds.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Download</h3>
+                        <p>Get your converted file and share it if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formats" class="formats-section">
+            <div class="container">
+                <h2>Supported File Formats</h2>
+                <div class="formats-tabs">
+                    <button class="format-tab-btn active" data-format="documents">Documents</button>
+                    <button class="format-tab-btn" data-format="images">Images</button>
+                    <button class="format-tab-btn" data-format="audio">Audio</button>
+                    <button class="format-tab-btn" data-format="video">Video</button>
+                    <button class="format-tab-btn" data-format="other">Other</button>
+                </div>
+                
+                <div class="formats-content">
+                    <div id="documents-format" class="format-table active">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Convert From</th>
+                                    <th>Convert To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PDF</td>
+                                    <td>DOCX, PPT, XLSX, JPG, PNG, HTML</td>
+                                    <td>DOCX, PPT, JPG, PNG, HTML</td>
+                                </tr>
+                                <tr>
+                                    <td>DOCX (Word)</td>
+                                    <td>PDF, TXT</td>
+                                    <td>PDF, TXT, HTML</td>
+                                </tr>
+                                <tr>
+                                    <td>PPT (PowerPoint)</td>
+                                    <td>PDF</td>
+                                    <td>PDF, JPG (per slide)</td>
+                                </tr>
+                                <tr>
+                                    <td>XLSX (Excel)</td>
+                                    <td>PDF, CSV</td>
+                                    <td>PDF, CSV</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="images-format" class="format-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Convert From</th>
+                                    <th>Convert To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>JPG</td>
+                                    <td>PNG, PDF, WEBP</td>
+                                    <td>PNG, PDF, WEBP</td>
+                                </tr>
+                                <tr>
+                                    <td>PNG</td>
+                                    <td>JPG, PDF, SVG, WEBP</td>
+                                    <td>JPG, PDF, SVG, WEBP</td>
+                                </tr>
+                                <tr>
+                                    <td>SVG</td>
+                                    <td>PNG, PDF</td>
+                                    <td>PNG, PDF</td>
+                                </tr>
+                                <tr>
+                                    <td>WEBP</td>
+                                    <td>JPG, PNG</td>
+                                    <td>JPG, PNG</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="audio-format" class="format-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Convert From</th>
+                                    <th>Convert To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MP3</td>
+                                    <td>WAV, AAC, M4A</td>
+                                    <td>WAV, AAC, M4A</td>
+                                </tr>
+                                <tr>
+                                    <td>WAV</td>
+                                    <td>MP3, AAC</td>
+                                    <td>MP3, AAC</td>
+                                </tr>
+                                <tr>
+                                    <td>AAC</td>
+                                    <td>MP3, WAV</td>
+                                    <td>MP3, WAV</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="video-format" class="format-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Convert From</th>
+                                    <th>Convert To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MP4</td>
+                                    <td>WEBM, AVI, MOV</td>
+                                    <td>WEBM, AVI, MOV, MP3 (audio extract)</td>
+                                </tr>
+                                <tr>
+                                    <td>WEBM</td>
+                                    <td>MP4, AVI</td>
+                                    <td>MP4, AVI</td>
+                                </tr>
+                                <tr>
+                                    <td>AVI</td>
+                                    <td>MP4, WEBM</td>
+                                    <td>MP4, WEBM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="other-format" class="format-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Convert From</th>
+                                    <th>Convert To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HTML</td>
+                                    <td>PDF</td>
+                                    <td>PDF</td>
+                                </tr>
+                                <tr>
+                                    <td>ZIP</td>
+                                    <td>RAR</td>
+                                    <td>RAR</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The fastest PDF to Word converter I've used. Saved me hours of work!"</p>
+                        <div class="user">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>Graphic Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Perfect for converting my lecture recordings from MP4 to MP3. Super easy to use!"</p>
+                        <div class="user">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h4>Michael Chen</h4>
+                                <span>University Student</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Batch conversion is a lifesaver for my e-commerce business. Worth the premium!"</p>
+                        <div class="user">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h4>Emma Rodriguez</h4>
+                                <span>Small Business Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="premium" class="premium-section">
+            <div class="container">
+                <div class="premium-card">
+                    <div class="premium-content">
+                        <h2>Go Premium</h2>
+                        <p>Unlock powerful features for professionals and power users.</p>
+                        <div class="premium-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Batch file conversion</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Faster conversion speeds</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Larger file size limits (up to 2GB)</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Priority support</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>No ads</span>
+                            </div>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$9.99<span>/month</span></div>
+                            <button class="btn premium-btn">Get Premium</button>
+                        </div>
+                    </div>
+                    <div class="premium-image">
+                        <img src="https://via.placeholder.com/400x300" alt="Premium features" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>FastConvert</h3>
+                    </div>
+                    <p>The fastest, most secure online file converter. Convert documents, images, audio and video files in seconds.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#formats">Supported Formats</a></li>
+                        <li><a href="#premium">Premium</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Popular Conversions</h4>
+                    <ul>
+                        <li><a href="#">PDF to Word</a></li>
+                        <li><a href="#">JPG to PNG</a></li>
+                        <li><a href="#">MP4 to MP3</a></li>
+                        <li><a href="#">Excel to PDF</a></li>
+                        <li><a href="#">PPT to PDF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FastConvert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="download-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="download-content">
+                <div class="download-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Conversion Complete!</h3>
+                <p>Your file has been successfully converted.</p>
+                <div class="download-options">
+                    <button class="btn primary download-btn">
+                        <i class="fas fa-download"></i> Download File
+                    </button>
+                    <div class="share-options">
+                        <button class="share-btn email-btn">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                        <button class="share-btn qr-btn">
+                            <i class="fas fa-qrcode"></i>
+                        </button>
+                        <button class="share-btn link-btn">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="compression-options">
+                    <label>
+                        <input type="checkbox" id="compress-file"> Compress file before download
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="qr-modal">
+        <div class="modal-content small">
+            <button class="close-modal">&times;</button>
+            <div class="qr-content">
+                <h3>Scan to Download</h3>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://fastconvert.example.com/download/12345" alt="QR Code">
+                </div>
+                <p>Scan this QR code with your mobile device to download the file.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="email-modal">
+        <div class="modal-content small">
+            <button class="close-modal">&times;</button>
+            <div class="email-content">
+                <h3>Email Download Link</h3>
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="email-address">Email Address</label>
+                        <input type="email" id="email-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sender-name">Your Name (optional)</label>
+                        <input type="text" id="sender-name">
+                    </div>
+                    <button type="submit" class="btn primary">Send Email</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
